@@ -1,0 +1,35 @@
+# AC5
+from random import randint
+
+def main():
+    vida_aventureiro = 100
+    ataqueaventureiro =randint(10, 20)
+    defesa_aventureiro =randint(1,5)
+    ataque_monstro=randint(20, 30)
+    vida_monstro=randint(60,80)
+    rodada=1
+    print("rodada", rodada)
+    print("aventureiro: vida", vida_aventureiro,"- ataque", ataqueaventureiro, "- defesa", defesa_aventureiro)
+    print("monstro: vida", vida_monstro, "- ataque", ataque_monstro)
+
+    while vida_aventureiro>0 and vida_monstro>0:
+        rodada=rodada+1
+        print("=" *20)
+        print("rodada", rodada)
+        print("aventureiro: vida", vida_aventureiro,"- ataque", ataqueaventureiro, "- defesa", defesa_aventureiro)
+        print("monstro: vida", vida_monstro, "- ataque", ataque_monstro)
+        vida_monstro=vida_monstro-randint(1, ataqueaventureiro)
+        if vida_monstro <=0:
+            print("morte monstro")
+            break
+        dano_monstro=randint(1, ataque_monstro) - defesa_aventureiro
+        if dano_monstro <=0:
+            vida_aventureiro=vida_aventureiro
+        else:
+            vida_aventureiro=vida_aventureiro-dano_monstro
+
+        if vida_aventureiro<=0:
+            print("aventureiro morreu")
+            break
+
+main()
